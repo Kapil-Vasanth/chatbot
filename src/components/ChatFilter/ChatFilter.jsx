@@ -2,36 +2,27 @@ import { Box, Select, MenuItem, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 
 export default function ChatFilter({ allChats, filterChats }) {
-
     const [option, setOption] = useState('All Ratings')
-
     const handleChange = (e) => {
         setOption(e.target.value)
     }
-
     // FILTER CHATS
     useEffect(() => {
-
         if (option == 'All Ratings') {
             filterChats(allChats)
         }
         else {
             const filtered = allChats.filter(item => {
-
                 let found = false
-
                 item.chat.forEach(ch => {
                     if (ch.rating == option) {
                         found = true
                     }
                 })
-
                 return found
             })
-
             filterChats(filtered)
         }
-
     }, [option])
 
     return (

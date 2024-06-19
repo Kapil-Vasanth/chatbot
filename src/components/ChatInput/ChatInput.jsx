@@ -18,13 +18,9 @@ export default function ChatInput({ generateResponse, setScroll, chat, clearChat
     const handleSave = () => {
 
         const chat_history = JSON.parse(localStorage.getItem('chat')) || []
-
         const date = new Date()
-
         localStorage.setItem('chat', JSON.stringify([{ chat: chat, datetime: date }, ...chat_history]))
-
         clearChat()
-
         setShowSnackbar(true)
     }
 
